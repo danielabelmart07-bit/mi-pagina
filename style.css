@@ -510,11 +510,17 @@ img {
 }
 
 .footer {
-    background-color: var(--text-dark);
-    color: rgba(255,255,255,0.4);
+    background-color: #2c2520 !important; /* Mantiene siempre el fondo marrón oscuro característico */
+    color: rgba(255, 255, 255, 0.6); /* En modo claro, las letras son blancas con un toque de transparencia */
     text-align: center;
     padding: 25px;
     font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+/* Cuando se activa el modo oscuro, obligamos a las letras a pasar a un blanco bien nítido */
+[data-theme="dark"] .footer {
+    color: #ffffff !important;
 }
 
 /* ==========================================================================
