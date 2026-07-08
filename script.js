@@ -182,18 +182,21 @@ paymentForm.addEventListener('submit', (e) => {
     window.location.href = mercadoPagoUrl;
 })
 
-// --- 8. FUNCIONALIDAD DE MODO OSCURO / CLARO ---
+// --- 8. FUNCIONALIDAD DE MODO OSCURO / CLARO (Versión SVG sin errores) ---
 const themeToggleBtn = document.getElementById('theme-toggle');
+
+// Definimos los dibujos exactos para la luna y el sol en código
+const SVG_LUNA = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+const SVG_SOL = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
 
 // Comprobar si el usuario ya tenía una preferencia guardada anteriormente
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggleBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+    themeToggleBtn.innerHTML = savedTheme === 'dark' ? SVG_SOL : SVG_LUNA;
 }
 
 themeToggleBtn.addEventListener('click', () => {
-    // Obtener el tema actual activo
     const currentTheme = document.documentElement.getAttribute('data-theme');
     let newTheme = 'light';
 
@@ -201,13 +204,9 @@ themeToggleBtn.addEventListener('click', () => {
         newTheme = 'dark';
     }
 
-    // Aplicar el nuevo tema al HTML
     document.documentElement.setAttribute('data-theme', newTheme);
-    
-    // Guardar la elección para la próxima visita
     localStorage.setItem('theme', newTheme);
     
-    // Cambiar el emoji del botón alternando sol y luna
-    themeToggleBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
-}); // <-- ¡AQUÍ ESTABA EL DETALLE! Cerramos la llave y el paréntesis.
-
+    // Cambiamos el icono interno inyectando el SVG correspondiente
+    themeToggleBtn.innerHTML = newTheme === 'dark' ? SVG_SOL : SVG_LUNA;
+});

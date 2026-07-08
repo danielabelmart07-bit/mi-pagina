@@ -11,21 +11,25 @@
 </head>
 <body>
 
-<!-- Busca tu navbar actual y reemplázala por esta estructura -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="#" class="logo">Masa<span>Madre</span></a>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li class="nav-actions">
-                <!-- NUEVO: Botón de Modo Oscuro / Claro -->
-                <button id="theme-toggle" class="btn-theme" aria-label="Cambiar modo de luz">🌙</button>
-                <button class="btn-nav toggle-cart">Ver Carrito (<span id="cart-count-nav">0</span>)</button>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <!-- Barra de Navegación Superior -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Masa<span>Madre</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li class="nav-actions">
+                    <!-- Botón de Modo Oscuro / Claro con Gráfico SVG (Evita el cuadrado blanco) -->
+                    <button id="theme-toggle" class="btn-theme" aria-label="Cambiar modo de luz">
+                        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <button class="btn-nav toggle-cart">Ver Carrito (<span id="cart-count-nav">0</span>)</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Panel Lateral del Carrito -->
     <div id="cart-sidebar" class="cart-sidebar">

@@ -460,3 +460,7 @@ img {
     .products-grid { grid-template-columns: 1fr; gap: 20px; }
     .section-title h2 { font-size: 1.8rem; }
 }
+
+.btn-theme svg {
+    color: var(--text-dark); /* Hace que el icono tome el color del texto actual */
+}
