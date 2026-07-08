@@ -378,36 +378,135 @@ img {
 
 .cart-overlay.open { display: block; }
 
-/* MODAL PASARELA */
+/* MODAL PASARELA (Corregido para funcionar con JS) */
 .modal {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
     background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
     z-index: 2000;
-    display: none;
+    display: none; /* JS controla la apertura con .open */
     align-items: center;
     justify-content: center;
 }
-.modal.open { display: flex; }
 
-.modal-content {
-    background-color: var(--white);
-    color: var(--text-dark);
-    padding: 35px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 90%;
-    position: relative;
-    box-shadow: var(--shadow);
+/* Cuando JS le agrega la clase open, se fuerza el display flex */
+.modal.open { 
+    display: flex !important; 
 }
 
-.form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-.form-group label { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-muted); }
-.form-group input { padding: 12px; border: 1px solid var(--border-color); background-color: var(--bg-light); color: var(--text-dark); border-radius: 8px; font-family: inherit; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+#checkout-modal .modal-content {
+    background-color: var(--white);
+    color: var(--text-dark);
+    max-width: 450px;
+    width: 90%;
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: var(--shadow);
+    font-family: var(--font-body);
+    border: 1px solid var(--border-color);
+}
 
-.btn-pay {
-    width: 100%; background-color: #25d366; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: 600; cursor: pointer; margin-top: 10px;
+#checkout-modal .close-modal {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+#checkout-modal h3 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 24px;
+    font-family: var(--font-heading);
+}
+
+#checkout-modal .modal-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* Contenedor del total */
+.modal-total-container {
+    background-color: var(--bg-light);
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
+
+#modal-total-amount {
+    font-size: 22px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Inputs adaptables */
+.form-group { 
+    margin-bottom: 20px; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.form-group label { 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    margin-bottom: 8px; 
+    color: var(--text-muted); 
+}
+
+.form-group input { 
+    padding: 12px; 
+    border: 1px solid var(--border-color); 
+    background-color: var(--bg-light); 
+    color: var(--text-dark); 
+    border-radius: 8px; 
+    font-family: inherit; 
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Botón de WhatsApp */
+#checkout-modal .btn-pay {
+    background-color: #25d366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+    transition: background-color 0.2s;
+}
+
+#checkout-modal .btn-pay:hover {
+    background-color: #20ba5a;
+}
+
+#checkout-modal .btn-pay img {
+    width: 22px;
+    height: 22px;
 }
 
 .footer {
@@ -422,33 +521,27 @@ img {
    6. RESPONSIVE MEJORADO (Optimizado para Celulares)
    ========================================================================== */
 @media (max-width: 768px) {
-    /* 1. Reducimos el logo para que no ocupe tanto espacio */
     .logo { font-size: 1.4rem; }
 
-    /* 2. Ocultamos los links "Inicio" y "Productos" y dejamos solo lo esencial */
     .nav-links li:nth-child(1), 
     .nav-links li:nth-child(2) {
-        display: none; /* Oculta Inicio y Productos para ahorrar espacio */
+        display: none; 
     }
 
-    /* 3. Ajustamos el contenedor de la navegación */
     .nav-container {
         padding: 10px;
         gap: 5px;
     }
 
-    /* 4. Aseguramos que los botones de acción tengan margen */
     .nav-actions {
         gap: 8px;
     }
 
-    /* 5. Ajuste del botón de carrito (texto más corto para pantallas chicas) */
     .btn-nav {
         padding: 8px 12px;
         font-size: 0.8rem;
     }
 
-    /* 6. El hero (presentación) ahora se ve mejor sin tanto padding superior */
     .hero {
         padding-top: 90px;
         gap: 20px;
@@ -462,5 +555,5 @@ img {
 }
 
 .btn-theme svg {
-    color: var(--text-dark); /* Hace que el icono tome el color del texto actual */
+    color: var(--text-dark); 
 }

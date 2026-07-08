@@ -45,16 +45,22 @@
                 <span>Total:</span>
                 <span id="cart-total-price">$0.00</span>
             </div>
-            <button id="go-to-checkout" class="btn-checkout">Proceder al Pago</button>
+            <!-- Modificado aquí: style para forzar centrado y eliminar cualquier icono del CSS anterior -->
+            <button id="go-to-checkout" class="btn-checkout" style="display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; content: none !important;">Proceder al Pago</button>
         </div>
     </div>
 
-<!-- Modal para Enviar Pedido por WhatsApp -->
+    <!-- Modal para Enviar Pedido por WhatsApp (Limpiado para reaccionar al Modo Claro/Oscuro del CSS) -->
     <div id="checkout-modal" class="modal">
         <div class="modal-content">
             <button class="close-modal">&times;</button>
-            <h3>Finalizar Compra por WhatsApp</h3>
-            <p class="modal-total">Monto estimado: <strong id="modal-total-amount">$0</strong></p>
+            <h3>Finalizar Compra</h3>
+            <p class="modal-subtitle">Completá tus datos para enviar el pedido directo a la panadería</p>
+            
+            <div class="modal-total-container">
+                <span>Monto estimado:</span>
+                <strong id="modal-total-amount">$0</strong>
+            </div>
             
             <form id="payment-form">
                 <div class="form-group">
@@ -65,11 +71,8 @@
                     <label for="client-address">Dirección de Entrega</label>
                     <input type="text" id="client-address" placeholder="Ej: Av. Rivadavia 1234, CABA" required>
                 </div>
-                <button type="submit" class="btn-pay" style="background-color: #25d366; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">
-                    <!-- Nuevo Icono SVG Minimalista de WhatsApp -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 22px; height: 22px; display: block;">
-                        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-4.005c0-3.617 2.95-6.57 6.57-6.57a6.57 6.57 0 0 1 4.645 1.93 6.567 6.567 0 0 1 1.929 4.646c-.002 3.618-2.956 6.57-6.573 6.57zm3.56-4.218c-.195-.097-1.155-.57-1.334-.635-.178-.065-.307-.097-.437.102-.13.197-.506.634-.62 1.156-.178.52-.355.57-.55.474-.195-.097-.822-.303-1.566-.967-.58-.518-.97-1.157-1.084-1.351-.114-.194-.012-.3-.11-.395-.087-.085-.195-.23-.293-.34-.098-.113-.13-.19-.195-.312-.065-.122-.033-.23-.016-.326.017-.096.179-.438.26-.56.082-.123.109-.205.163-.34.054-.135.027-.25-.013-.346-.04-.096-.437-1.05-.6-.178-.57-.256-.434-.098-.5-.1-.065-.002-.139-.002-.213-.002a1.26 1.26 0 0 0-.91.424c-.313.336-.76.737-.76 1.798H5.97c0 1.06.772 2.086.88 2.23.108.146 1.517 2.316 3.674 3.248.513.222.913.355 1.226.455.517.164.987.14 1.358.085.414-.06 1.264-.517 1.442-1.017.177-.5.177-.93.124-1.017-.053-.087-.195-.136-.39-.232z"/>
-                    </svg>
+                <button type="submit" class="btn-pay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
                     Enviar Pedido por WhatsApp
                 </button>
             </form>
