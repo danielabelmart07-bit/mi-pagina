@@ -418,44 +418,45 @@ img {
     font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   6. RESPONSIVE (Optimizado para Celulares)
+* ==========================================================================
+   6. RESPONSIVE MEJORADO (Optimizado para Celulares)
    ========================================================================== */
 @media (max-width: 768px) {
+    /* 1. Reducimos el logo para que no ocupe tanto espacio */
+    .logo { font-size: 1.4rem; }
+
+    /* 2. Ocultamos los links "Inicio" y "Productos" y dejamos solo lo esencial */
+    .nav-links li:nth-child(1), 
+    .nav-links li:nth-child(2) {
+        display: none; /* Oculta Inicio y Productos para ahorrar espacio */
+    }
+
+    /* 3. Ajustamos el contenedor de la navegación */
     .nav-container {
-        padding: 10px 15px;
+        padding: 10px;
+        gap: 5px;
     }
-    .nav-links {
-        gap: 12px;
+
+    /* 4. Aseguramos que los botones de acción tengan margen */
+    .nav-actions {
+        gap: 8px;
     }
-    .nav-links a {
-        font-size: 0.9rem;
+
+    /* 5. Ajuste del botón de carrito (texto más corto para pantallas chicas) */
+    .btn-nav {
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
+
+    /* 6. El hero (presentación) ahora se ve mejor sin tanto padding superior */
     .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding-top: 110px;
-        gap: 30px;
-    }
-    .hero-image {
-        order: -1;
-    }
-    .hero-image img {
-        height: 280px;
-    }
-    .cart-sidebar {
-        width: 100%;
-        right: -100%;
-    }
-    .products-grid {
-        grid-template-columns: 1fr;
+        padding-top: 90px;
         gap: 20px;
     }
-    .section-title h2 {
-        font-size: 2rem;
-    }
-    .modal-content {
-        padding: 25px 20px;
-        width: 95%;
-    }
+
+    .hero-content h1 { font-size: 2.2rem; }
+    
+    .cart-sidebar { width: 100%; right: -100%; }
+    .products-grid { grid-template-columns: 1fr; gap: 20px; }
+    .section-title h2 { font-size: 1.8rem; }
 }
