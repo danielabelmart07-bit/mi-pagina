@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa Madre - Panadería Artesanal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Busca tu navbar actual y reemplázala por esta estructura -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">Masa<span>Madre</span></a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li class="nav-actions">
+                <!-- NUEVO: Botón de Modo Oscuro / Claro -->
+                <button id="theme-toggle" class="btn-theme" aria-label="Cambiar modo de luz">🌙</button>
+                <button class="btn-nav toggle-cart">Ver Carrito (<span id="cart-count-nav">0</span>)</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- Panel Lateral del Carrito -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty-message">Tu carrito está vacío.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button id="go-to-checkout" class="btn-checkout" disabled>Proceder al Pago 💳</button>
+        </div>
+    </div>
+
+    <!-- Modal Formulario de Tarjeta / Checkout -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h3>Finalizar Compra</h3>
+            <p class="modal-total">Monto a pagar: <strong id="modal-total-amount">$0.00</strong></p>
+            
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-name">Nombre en la tarjeta</label>
+                    <input type="text" id="card-name" placeholder="Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Número de tarjeta</label>
+                    <input type="text" id="card-number" placeholder="4532 0000 0000 0000" maxlength="19" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="card-expiry">Vencimiento</label>
+                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-cvv">CVV</label>
+                        <input type="password" id="card-cvv" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-pay">Confirmar Pago Seguro</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Fondo oscuro cuando se abren paneles -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+
+    <!-- Presentación Hero -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">Horneado hoy, con amor</span>
+            <h1>El arte del pan tradicional en tu mesa</h1>
+            <p>Crujiente por fuera, extra suave por dentro. Descubre el verdadero sabor artesanal.</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn-primary">Ver Catálogo</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800" alt="Pan artesanal">
+        </div>
+    </header>
+
+    <!-- Sección de Productos -->
+    <section id="productos" class="products">
+        <div class="section-title">
+            <h2>Nuestras Especialidades</h2>
+            <p>Agrega los productos que desees a tu carrito para comprarlos de inmediato.</p>
+        </div>
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card" data-id="1" data-name="Pan de Campo Rústico" data-price="4.50">
+                <div class="product-img">
+                    <img src="https://img.magnific.com/premium-photo/wheat-bread-isolated-bakery-products_185193-1816.jpg" alt="Pan de Campo">
+                </div>
+                <div class="product-info">
+                    <h3>Pan de Campo Rústico</h3>
+                    <p>Masa madre integral con un toque sutil de centeno y costra rústica.</p>
+                    <div class="product-meta">
+                        <span class="price">$4.500</span>
+                        <button class="btn-add-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product-card" data-id="2" data-name="Croissant de Mantequilla" data-price="2.20">
+                <div class="product-img">
+                    <img src="https://vandemoortele.getbynder.com/transform/be55eee8-ee83-4e34-b019-6be958ced83a/croissant-40g?io=transform:scale,height:800" alt="Croissants">
+                </div>
+                <div class="product-info">
+                    <h3>Medialuna de Mantequilla</h3>
+                    <p>Hojaldre francés clásico, súper crujiente y con capas perfectas.</p>
+                    <div class="product-meta">
+                        <span class="price">$2.200</span>
+                        <button class="btn-add-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="product-card" data-id="3" data-name="Baguette Tradicional" data-price="1.80">
+                <div class="product-img">
+                    <img src="https://www.europastry.media/catalog_images/images/FRIPAN61243220309163331.jpeg?width=800&dpr=2&quality=90" alt="Baguette">
+                </div>
+                <div class="product-info">
+                    <h3>Baguette Tradicional</h3>
+                    <p>La clásica receta parisina con miga suave y corteza dorada.</p>
+                    <div class="product-meta">
+                        <span class="price">$1.800</span>
+                        <button class="btn-add-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Masa Madre Panadería. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
